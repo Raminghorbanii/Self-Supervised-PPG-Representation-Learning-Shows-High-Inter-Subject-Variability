@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Feb 12 09:05:08 2024
-
-@author: raminghorbani
-"""
 
 
 #########################

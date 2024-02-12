@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Feb 12 09:02:23 2024
-
-@author: raminghorbani
-"""
-
-
 
 from sklearn.preprocessing import StandardScaler
 import numpy as np

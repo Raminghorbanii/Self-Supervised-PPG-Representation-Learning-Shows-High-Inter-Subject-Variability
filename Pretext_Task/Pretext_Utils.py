@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Feb 10 13:41:03 2024
-
-@author: raminghorbani
-"""
-
-
 
 
 def input_gen(x, y, batch_size):
