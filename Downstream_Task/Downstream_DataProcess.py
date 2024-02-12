@@ -14,6 +14,7 @@ import os
 def SamplePerClass_Index(dataset_array, num_samples):
     ''' Takes the data and number of samples 
     to return the index of equall number of samples per each value in the data'''
+    
     df = pd.DataFrame(dataset_array)
     np.random.seed(42)
     df = df.groupby(df[0]).apply(lambda s: s.sample(num_samples)).droplevel(level=0)
@@ -59,6 +60,7 @@ def to_supervised(data, n_input, shift ):
 
 def all_equal(data):
     ''' takes the windows and check if all datapoint are equal to return True '''
+    
     iterator = iter(data)
     try:
         first = next(iterator)
@@ -94,10 +96,8 @@ def load_and_preprocess_data(config, id_data, scaler=None, fit_scaler=True, remo
     Load and preprocess signal data from a given file path.
 
     Parameters:
-    - file_path: Path to the signal data file.
-    - signal_freq: Sampling frequency of the signal.
-    - low_freq, high_freq: Frequency range for bandpass filter.
-    - filter_order: Order of the bandpass filter.
+    - config: config file including all parameters.
+    - id_data: test person id. 
     - scaler: Instance of a scaler (e.g., StandardScaler). If None, a new scaler will be created.
     - fit_scaler: Boolean flag indicating whether to fit the scaler to the data or use it for transformation only.
 
@@ -170,14 +170,6 @@ def prepare_datasets(config, training_persons, test_persons):
     """
     Prepare training and testing datasets.
 
-    Parameters:
-    - scaler: Scaler instance for data normalization.
-    - n_input, shift: Parameters for supervised dataset creation.
-    - signal_freq, low_freq, high_freq, filter_order: Signal processing parameters.
-    - training_paths, testing_paths: Lists of file paths for training and testing datasets.
-
-    Returns:
-    - Training and testing datasets.
     """
     
     # Load and preprocess training data
