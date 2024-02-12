@@ -1,0 +1,66 @@
+
+
+{
+  "test_person": 1,
+  "training_persons": [1,2,3,4,5,7,8,9,10,11,12,13,14,15],
+  "selected_activities": [1,2,3,4,7],
+  "sample_num_per_class_list": [2,5,10,50,1000],
+  "selected_model": "kNN",
+  
+  "data_directory": "/path/to/your/dataset",
+  
+  "prepare_datasets_params": {
+    "n_input": 512,
+    "shift": 128,
+    "shift_test": 128,
+    "signal_freq": 64,
+    "low_freq": 0.1,
+    "high_freq": 10,
+    "filter_order": 2,
+    "n_input_activity_sig": 32,
+    "shift_activity_sig": 8
+  },
+
+   "knn_params": {
+    "rep_dimension": 64
+  },
+
+   "lr_params": {
+    "rep_dimension": 64
+  },
+      
+   "cnn_lstm_params": {
+    "rep_dimension": 64,
+    "n_features": 1,
+    "n_steps": 512,
+    "epochs": 150,
+    "batch_size": 128,
+    "optimizer": {
+      "learning_rate": 0.001,
+      "clipnorm": 0.6
+    },
+    "dropout_rate": 0.5,
+    "early_stopping": {
+      "min_delta": 0.005,
+      "patience": 20
+    }
+  },
+
+  "model_directory": "/path/to/your/models",
+  "encoder_mlp_params": {
+    "rep_dimension": 64,
+    "n_features": 1,
+    "n_steps": 512,
+    "epochs": 150,
+    "batch_size": 128,
+    "optimizer": {
+      "learning_rate": 0.001,
+      "clipnorm": 0.6
+    },
+    "early_stopping": {
+      "min_delta": 0.005,
+      "patience": 20
+    }
+  }
+}
+
