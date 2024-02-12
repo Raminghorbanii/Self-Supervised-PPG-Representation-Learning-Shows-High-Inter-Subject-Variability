@@ -14,8 +14,8 @@ Our experiments are conducted using the PPG-DaLiA dataset. For access and more i
 To get started, clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/Raminghorbanii/Self-Supervised-PPG-Representation-Learning-Shows-High-Inter-Subject-Variability.git
-cd Self-Supervised-PPG-Representation-Learning-Shows-High-Inter-Subject-Variability
+git clone https://github.com/Raminghorbanii/Self-Supervised-PPG-Representation-Learning-Shows-High-Inter-Subject-Variability.git SSL_HISV
+cd SSL_HISV
 ```
 
 ### Set Up the Environment
