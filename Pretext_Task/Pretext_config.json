@@ -30,5 +30,5 @@
       "patience": 30
     }
   },
-  "model_directory": "/path/to/your/models"
+  "saved_model_directory": "/path/to/your/saved_models"
 }

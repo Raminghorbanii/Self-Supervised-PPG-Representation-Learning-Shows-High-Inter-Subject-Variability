@@ -31,7 +31,7 @@ class KnnModel():
         knn_params = config["knn_params"]
         self.rep_dimension = knn_params["rep_dimension"]
         
-        self.model_directory = config.get("model_directory", "")
+        self.saved_model_directory = config.get("saved_model_directory", "")
         self.person_id = test_id
         self.Sample_Num_per_class = Sample_Num_per_class
         self.train_ppg = train_ppg
@@ -48,7 +48,7 @@ class KnnModel():
         else : self.K = 20
         
         if learnedRep:
-            encoder_model_path = os.path.join(self.model_directory, f'CNNAE_encoder_Person{self.person_id}_D{self.rep_dimension}_Repeat0.h5')
+            encoder_model_path = os.path.join(self.saved_model_directory, f'CNNAE_encoder_Person{self.person_id}_D{self.rep_dimension}_Repeat0.h5')
             encoder = load_model(encoder_model_path, compile=False)
         
             train_ppg = encoder.predict(self.train_ppg)
@@ -96,7 +96,7 @@ class LRModel():
         lr_params = config["lr_params"]
         self.rep_dimension = lr_params["rep_dimension"]
         
-        self.model_directory = config.get("model_directory", "")
+        self.saved_model_directory = config.get("saved_model_directory", "")
         self.person_id = test_id
         self.Sample_Num_per_class = Sample_Num_per_class
         self.train_ppg = train_ppg
@@ -107,7 +107,7 @@ class LRModel():
         
 
         if learnedRep:
-            encoder_model_path = os.path.join(self.model_directory, f'CNNAE_encoder_Person{self.person_id}_D{self.rep_dimension}_Repeat0.h5')
+            encoder_model_path = os.path.join(self.saved_model_directory, f'CNNAE_encoder_Person{self.person_id}_D{self.rep_dimension}_Repeat0.h5')
             encoder = load_model(encoder_model_path, compile=False)
         
             train_ppg = encoder.predict(self.train_ppg)
@@ -154,7 +154,7 @@ class CnnLstmModel():
         
         cnn_lstm_params = config["cnn_lstm_params"]
 
-        self.model_directory = config.get("model_directory", "")
+        self.saved_model_directory = config.get("saved_model_directory", "")
         self.rep_dimension = cnn_lstm_params["rep_dimension"]
         self.n_features = cnn_lstm_params["n_features"]
         self.n_steps = cnn_lstm_params["n_steps"]
@@ -264,7 +264,7 @@ class Encoder_MLP():
         self.early_stopping_params = encoder_mlp_params["early_stopping"]
         
         # Determine model directory
-        self.model_directory = config.get("model_directory", "")
+        self.saved_model_directory = config.get("saved_model_directory", "")
         
         self.repeat = repeat
         self.person_id = test_id
@@ -279,8 +279,8 @@ class Encoder_MLP():
     
     def model(self):
         
-        encoder_model_path = os.path.join(self.model_directory, f'CNNAE_encoder_Person{self.person_id}_D{self.rep_dimension}_Repeat0.h5')
-        encoder_weights_path = os.path.join(self.model_directory, f'initial_PPGCNNAE_W_{self.person_id}_{self.repeat}.h5')
+        encoder_model_path = os.path.join(self.saved_model_directory, f'CNNAE_encoder_Person{self.person_id}_D{self.rep_dimension}_Repeat0.h5')
+        encoder_weights_path = os.path.join(self.saved_model_directory, f'initial_PPGCNNAE_W_{self.person_id}_{self.repeat}.h5')
 
         # Load the encoder model and weights
         encoder = load_model(encoder_model_path, compile=False)

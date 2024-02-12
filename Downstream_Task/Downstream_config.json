@@ -46,7 +46,7 @@
     }
   },
 
-  "model_directory": "/path/to/your/models",
+  "saved_model_directory": "/path/to/your/saved_models",
   "encoder_mlp_params": {
     "rep_dimension": 64,
     "n_features": 1,

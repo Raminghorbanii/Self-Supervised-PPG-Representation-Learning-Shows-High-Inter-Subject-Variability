@@ -39,7 +39,7 @@ def CNNAE_model(config, train_data, test_data, repeat):
     batch_size = CNN_AE_params["batch_size"]
     optimizer_params = CNN_AE_params["optimizer"]
     early_stopping_params = CNN_AE_params["early_stopping"]
-    model_directory = config.get("model_directory", "")
+    saved_model_directory = config.get("saved_model_directory", "")
 
         
     K.clear_session()
@@ -91,7 +91,7 @@ def CNNAE_model(config, train_data, test_data, repeat):
     encoder = Model(inputs=input_sig, outputs=bottleneck)
     
     # Save initial random weights of the encoder
-    initial_weights_path = os.path.join(model_directory, f'initial_PPGCNNAE_W_{test_num}_{repeat}.h5')
+    initial_weights_path = os.path.join(saved_model_directory, f'initial_PPGCNNAE_W_{test_num}_{repeat}.h5')
     encoder.save_weights(initial_weights_path)
     
     es = EarlyStopping(**early_stopping_params, monitor='val_loss', mode='min', verbose=1)
@@ -112,7 +112,7 @@ def CNNAE_model(config, train_data, test_data, repeat):
     his_info = [history.history]
     
     # Save the encoder model after training
-    encoder_model_path = os.path.join(model_directory, f'CNNAE_encoder_Person{test_num}_D{rep_dimension}_Repeat{repeat}.h5')
+    encoder_model_path = os.path.join(saved_model_directory, f'CNNAE_encoder_Person{test_num}_D{rep_dimension}_Repeat{repeat}.h5')
     encoder.save(encoder_model_path)
     
     return model, his_info
